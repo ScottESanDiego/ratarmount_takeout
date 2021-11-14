@@ -29,8 +29,7 @@ ratarmount --index-folder ${INDEX} ${TARBALLS}/* ${TMPMOUNT}
 
 # Sync contents from mount point to backup ${DESTINATION}
 # Relies on --checksum since file times are not stable
-#rsync --dry-run --itemize-changes --inplace --archive --delete --checksum ${TMPMOUNT}/ ${DESTINATION}/
-rsync --itemize-changes --inplace --archive --delete --checksum --modify-window 86400 --omit-dir-times ${TMPMOUNT}/ ${DESTINATION}/
+rsync --itemize-changes --inplace --archive --delete --checksum --modify-window 86400 --omit-dir-times --no-times ${TMPMOUNT}/ ${DESTINATION}/
 
 # Hard link identical files, but don't bother saving results
 rdfind -makehardlinks true -makeresultsfile false ${DESTINATION}
