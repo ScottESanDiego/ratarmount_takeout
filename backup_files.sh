@@ -32,7 +32,8 @@ ratarmount --index-folder ${INDEX} ${TARBALLS}/* ${TMPMOUNT}
 rsync --itemize-changes --inplace --archive --delete --checksum --modify-window 86400 --omit-dir-times --no-times ${TMPMOUNT}/ ${DESTINATION}/
 
 # Hard link identical files, but don't bother saving results
-rdfind -makehardlinks true -makeresultsfile false ${DESTINATION}
+# On hold to debug
+#rdfind -makehardlinks true -makeresultsfile false ${DESTINATION}
 
 # Be kind and unmount the mount before exiting
 fusermount -u ${TMPMOUNT}
